@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Mainpage without crashing 1`] = `
+<div
+  className="tc"
+>
+  <Header />
+  <SearchBox />
+  <h1>
+    Oooops. No robots with that name
+  </h1>
+</div>
+`;
