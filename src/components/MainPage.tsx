@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
-import CardList from '../components/CardList';
-import SearchBox from '../components/SearchBox';
-import Scroll from '../components/Scroll';
-import ErrorBoundary from '../components/ErrorBoundary';
+import Header from './Header';
+import CardList from './CardList';
+import SearchBox from './SearchBox';
+import Scroll from './Scroll';
+import ErrorBoundary from './ErrorBoundary';
 import './MainPage.css';
+import { IRobot } from '../containers/App';
 
-class MainPage extends Component {
-  componentDidMount() {
+export interface IMainPageProps {
+  searchField: string;
+  robots: Array<IRobot>;
+  isPending: boolean;
+  error: string;
+  onSearchChange: (event: React.SyntheticEvent<HTMLInputElement>) => any;
+  onRequestRobots: () => any;
+}
+
+class MainPage extends Component<IMainPageProps> {
+  componentDidMount(): void {
     this.props.onRequestRobots();
   }
 
@@ -19,7 +29,7 @@ class MainPage extends Component {
     });
   };
 
-  render() {
+  render(): JSX.Element {
     const { onSearchChange, isPending } = this.props;
     const filteredRobots = this.filterRobots();
     let scroll;
